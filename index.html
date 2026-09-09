@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alhamad Group | مجموعة الحمد للمجوهرات</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: rgba(0, 0, 0, 0);
+            /* التدرج الذهبي الفاخر الموحد */
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-border: rgba(212, 175, 55, 0.5);
+            --text-white: #ffffff;
+            --text-muted: #cccccc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cinzel', 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            background-image: none;
+            color: var(--text-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--gold-border);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 1. توحيد لون اللوغو بالتدرج الذهبي باستخدام CSS Masking */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-container img {
+            width: 230px;
+            max-width: 90%;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+        }
+
+        .brand-title {
+            margin-bottom: 25px;
+        }
+
+        .brand-title h1 {
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+            font-weight: 700;
+        }
+
+        .brand-title h2 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* 2. توحيد الأيقونات الدائرية باللون الذهبي المتدرج */
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .icon-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #151515;
+            border: 1px solid var(--gold-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* تطبيق التدرج على الأيقونة بداخل الزر */
+        .icon-btn i {
+            font-size: 1.3rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon-btn:hover {
+            background: var(--gold-gradient);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .icon-btn:hover i {
+            background: none;
+            -webkit-text-fill-color: #000; /* يتحول الأيقونة للأسود عند الهوفر */
+        }
+
+        /* Information List */
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateX(3px);
+        }
+
+        /* 3. توحيد أيقونات المعلمات داخل القائمة بالتدرج الذهبي */
+        .info-card i {
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+            flex-shrink: 0;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .info-en {
+            font-size: 0.8rem;
+            color: var(--text-white);
+            font-weight: 600;
+            direction: ltr;
+            text-align: left;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+        }
+
+        .info-ar {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary i {
+            color: #000; /* أيقونة زر البورتفيليو سوداء لتناسب الخلفية الذهبية */
+        }
+
+        .btn-primary:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--gold-border);
+            padding: 14px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary i {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.12);
+            border-color: rgba(212, 175, 55, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .phone-num {
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Alhamad Group Logo">
+        </div>
+
+        <!-- Title Section -->
+        <div class="brand-title">
+            <h1>ALHAMAD GROUP</h1>
+            <h2>مجموعة الحمد</h2>
+        </div>
+
+        <!-- Quick Circular Action Icons (Unified Gold Gradient) -->
+        <div class="social-icons-row">
+            <a href="https://wa.me/963985270944" target="_blank" class="icon-btn" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/alhamad_jewellery" target="_blank" class="icon-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://maps.google.com/?q=33.518688,36.293552" target="_blank" class="icon-btn" title="Location">
+                <i class="fa-solid fa-location-dot"></i>
+            </a>
+        </div>
+
+        <!-- Info List -->
+        <div class="info-list">
+            
+            <!-- Address Card -->
+            <a href="https://maps.google.com/?q=33.518688,36.293552" target="_blank" class="info-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <div class="info-text">
+                    <span class="info-en">Damascus - Syria - Al-Abed ST. - Al-Salihia building - Opposite Al-Rawda Cafe</span>
+                    <span class="info-ar">سوريا - دمشق - شارع العابد - بناء الصالحية - مقابل قهوة الروضة</span>
+                </div>
+            </a>
+
+            <!-- Mobile / WhatsApp Card -->
+            <a href="https://wa.me/963985270944" target="_blank" class="info-card">
+                <i class="fa-solid fa-phone"></i>
+                <div class="info-text">
+                    <span class="info-en">Mobile: <span class="phone-num">+963 985 270 944</span></span>
+                    <span class="info-ar">واتساب / جوال: <span class="phone-num">+963 985 270 944</span></span>
+                </div>
+            </a>
+
+            <!-- Updated Email Card (Single @ for proper email apps trigger) -->
+            <a href="mailto:info.alhamad.global@gmail.com" class="info-card">
+                <i class="fa-solid fa-envelope"></i>
+                <div class="info-text">
+                    <span class="info-en">info.alhamad.global@gmail.com</span>
+                    <span class="info-ar">البريد الإلكتروني</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <!-- PDF Portfolio Button (Updated Text) -->
+            <a href="portfolio.pdf" target="_blank" class="btn-primary">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>Group portfolio | من نحن؟</span>
+            </a>
+
+            <!-- Save Contact VCF Button -->
+            <button onclick="downloadVCard()" class="btn-secondary">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Save Contact | حفظ جهة الاتصال</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Script to Generate & Download Contact (.vcf) -->
+    <script>
+        function downloadVCard() {
+            const vcardData = 
+`BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Customer Service - Alhamad Jewellery Group | خدمة العملاء لمجموعة الحمد للمجوهرات
+N;CHARSET=UTF-8:Jewellery Group;Alhamad Customer Service;;;
+ORG;CHARSET=UTF-8:Alhamad Jewellery Group | مجموعة الحمد للمجوهرات
+TEL;TYPE=CELL,VOICE:+963985270944
+EMAIL:info.alhamad.global@gmail.com
+ADR;TYPE=WORK;CHARSET=UTF-8:;;Al-Salihia building, Al-Abed ST., Opposite Al-Rawda Cafe;Damascus;;;Syria
+URL;TYPE=Map:https://maps.google.com/?q=33.518688,36.293552
+END:VCARD`;
+
+            const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Alhamad_Customer_Service.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
